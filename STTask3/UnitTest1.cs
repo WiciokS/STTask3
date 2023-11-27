@@ -4,6 +4,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace STTask3
 {
@@ -536,10 +537,16 @@ namespace STTask3
                 checkBoxes[i].Click();
 
             Thread.Sleep(1000);
-
+            //Delete Fields
+            for (int i = 0; i<3 ; i++)
+            {
+                Thread.Sleep(1000);
+                driver.FindElement(By.CssSelector("[class='oxd-icon bi-x --clear']")).Click();
+            }
+            Thread.Sleep(1000);
             //Click delete Button
             driver.FindElement(By.CssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div:nth-child(5) > div > div:nth-child(3) > button > i")).Click();
-
+            
             // Find all selected field elements by the class that indicates they are selected
             IList<IWebElement> selectedFields = driver.FindElements(By.CssSelector("[class='oxd-chip oxd-chip--default oxd-multiselect-chips-selected']"));
 
